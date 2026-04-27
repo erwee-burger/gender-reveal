@@ -8,6 +8,21 @@ export const siteConfig = {
   theme: "blue-leaning"
 };
 
+export const poolConfig = {
+  revealResult: null
+  // After the reveal, fill this in and push to GitHub:
+  // revealResult: {
+  //   gender: "girl",          // "boy" or "girl"
+  //   birthDate: "2026-06-10", // YYYY-MM-DD
+  //   birthTime: "14:23",      // HH:MM (24-hour)
+  //   weightG: 3200,           // grams
+  //   lengthCm: 51.0,          // centimetres
+  //   hairColour: "brown",     // must match a form option value
+  //   eyeColour: "blue",       // must match a form option value
+  //   nameLetter: "S"          // single uppercase letter
+  // }
+};
+
 export const evidenceLog = [
   {
     id: "Evidence 001",

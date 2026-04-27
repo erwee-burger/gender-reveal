@@ -1189,3 +1189,351 @@ h2 {
     width: 92px;
   }
 }
+
+/* ─── Pool page nav ─────────────────────────────────────────────────────────── */
+
+.pool-page-nav {
+  position: relative;
+  z-index: 1;
+  padding: 24px 24px 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pool-back-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--case-muted);
+  transition: color 0.15s;
+}
+
+.pool-back-button:hover {
+  color: var(--case-ink);
+}
+
+/* ─── Baby Pool section ─────────────────────────────────────────────────────── */
+
+.pool-section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px 96px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pool-intro {
+  color: var(--case-muted);
+  max-width: 560px;
+  margin: 0 0 40px;
+  line-height: 1.65;
+}
+
+/* Form */
+
+.pool-form {
+  background: var(--case-paper);
+  border: 1.5px solid var(--case-line);
+  border-radius: calc(var(--radius) * 2);
+  padding: 36px 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pool-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pool-form-group label,
+.pool-form-gender legend {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.pool-form-group input,
+.pool-form-group select {
+  padding: 10px 12px;
+  border: 1.5px solid var(--case-line);
+  border-radius: var(--radius);
+  background: var(--case-paper);
+  color: var(--case-ink);
+  font: inherit;
+  font-size: 1rem;
+  transition: border-color 0.15s;
+}
+
+.pool-form-group input:focus,
+.pool-form-group select:focus {
+  outline: none;
+  border-color: var(--accent-strong);
+}
+
+.pool-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Gender radios */
+
+.pool-form-gender {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pool-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1.5px solid var(--case-line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+  flex: 1;
+  justify-content: center;
+}
+
+.pool-form-gender {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pool-form-gender .pool-radios {
+  display: flex;
+  gap: 12px;
+}
+
+.pool-radio input[type="radio"] {
+  accent-color: var(--accent-strong);
+}
+
+.pool-radio.is-selected {
+  border-color: var(--accent-strong);
+  background: rgba(127, 90, 200, 0.07);
+}
+
+/* Name's first letter — narrow */
+
+.pool-form-letter input {
+  width: 72px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Error / submit */
+
+.pool-name-warning {
+  color: #b7620a;
+  font-size: 0.85rem;
+  margin: 4px 0 0;
+}
+
+.pool-form-error {
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.pool-form-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* Confirmation state */
+
+.pool-confirmed {
+  background: var(--case-paper);
+  border: 1.5px solid var(--case-line);
+  border-radius: calc(var(--radius) * 2);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.pool-confirmed-headline {
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+}
+
+.pool-confirmed-sub {
+  color: var(--case-muted);
+  margin: 0;
+}
+
+.pool-success-toast {
+  margin-top: 16px;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+/* ─── Leaderboard section ───────────────────────────────────────────────────── */
+
+.leaderboard-section {
+  position: relative;
+  z-index: 1;
+  padding: 0 24px 120px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Password gate */
+
+.leaderboard-gate {
+  background: var(--case-paper);
+  border: 1.5px solid var(--case-line);
+  border-radius: calc(var(--radius) * 2);
+  padding: 36px 32px;
+  box-shadow: var(--shadow);
+  max-width: 440px;
+}
+
+.leaderboard-gate-label {
+  margin: 0 0 16px;
+  color: var(--case-muted);
+}
+
+.leaderboard-gate-row {
+  display: flex;
+  gap: 10px;
+}
+
+.leaderboard-gate-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1.5px solid var(--case-line);
+  border-radius: var(--radius);
+  background: var(--case-paper);
+  color: var(--case-ink);
+  font: inherit;
+  font-size: 1rem;
+  transition: border-color 0.15s;
+}
+
+.leaderboard-gate-input:focus {
+  outline: none;
+  border-color: var(--accent-strong);
+}
+
+.leaderboard-gate-input.is-error {
+  border-color: #c0392b;
+}
+
+.leaderboard-gate-error {
+  margin: 10px 0 0;
+  color: #c0392b;
+  font-size: 0.88rem;
+}
+
+/* Table */
+
+.leaderboard-notice {
+  margin: 0 0 20px;
+  color: var(--case-muted);
+  font-style: italic;
+}
+
+.leaderboard-loading {
+  color: var(--case-muted);
+  font-style: italic;
+}
+
+.leaderboard-table-scroll {
+  overflow-x: auto;
+  border-radius: calc(var(--radius) * 2);
+  box-shadow: var(--shadow);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--case-paper);
+  font-size: 0.9rem;
+}
+
+.leaderboard-table thead tr {
+  border-bottom: 2px solid var(--case-line);
+}
+
+.leaderboard-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+  white-space: nowrap;
+}
+
+.leaderboard-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--case-line);
+  white-space: nowrap;
+}
+
+.leaderboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboard-table tbody tr:hover {
+  background: rgba(127, 90, 200, 0.04);
+}
+
+.leaderboard-rank {
+  font-weight: 700;
+  color: var(--case-muted);
+  width: 32px;
+}
+
+.leaderboard-name {
+  font-weight: 600;
+}
+
+.leaderboard-score {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-strong);
+}
+
+/* ─── Pool / leaderboard responsive ────────────────────────────────────────── */
+
+@media (max-width: 620px) {
+  .pool-form {
+    padding: 24px 18px;
+  }
+
+  .pool-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pool-form-submit {
+    align-self: stretch;
+  }
+
+  .leaderboard-gate {
+    padding: 24px 18px;
+  }
+
+  .leaderboard-gate-row {
+    flex-direction: column;
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCountdownParts } from "./countdown.js";
 import { evidenceLog, siteConfig } from "./config.js";
 import { getConfiguredTheme } from "./theme.js";
+import { PredictionForm } from "./components/PredictionForm.jsx";
 
 const schoolFish = Array.from({ length: 24 }, (_, index) => {
   const isBlue = index < 12;
@@ -102,6 +103,7 @@ function App() {
   const [now, setNow] = useState(() => new Date());
   const [showGoldBubble, setShowGoldBubble] = useState(false);
   const [heroImage, setHeroImage] = useState(siteConfig.heroImage);
+  const [page, setPage] = useState("home");
   const theme = getConfiguredTheme(siteConfig.theme);
   const countdown = getCountdownParts(siteConfig.countdownTarget, now);
   const latestEvidence = evidenceLog[0];
@@ -124,6 +126,16 @@ function App() {
     window.setTimeout(() => setShowGoldBubble(false), 3600);
   }
 
+  function goToPool() {
+    setPage("pool");
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  function goHome() {
+    setPage("home");
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
   return (
     <main className="site-shell" data-theme={theme}>
       <div className="water-background">
@@ -138,81 +150,111 @@ function App() {
       </div>
       <GoldFish showBubble={showGoldBubble} onClick={revealGoldBubble} />
 
-      <section className="hero-section" aria-labelledby="page-title">
-        <div className="hero-copy">
-          <p className="eyebrow">Classified Baba File</p>
-          <h1 id="page-title">The Pikkewyn Case File</h1>
-          <p className="subtitle">
-            {siteConfig.parents} are expecting... but the result is still classified.
-          </p>
-          <p className="teaser">
-            Charlie and Bruce may know something. They are not considered reliable witnesses.
-          </p>
+      {page === "home" ? (
+        <>
+          <section className="hero-section" aria-labelledby="page-title">
+            <div className="hero-copy">
+              <p className="eyebrow">Classified Baba File</p>
+              <h1 id="page-title">The Pikkewyn Case File</h1>
+              <p className="subtitle">
+                {siteConfig.parents} are expecting... but the result is still classified.
+              </p>
+              <p className="teaser">
+                Charlie and Bruce may know something. They are not considered reliable witnesses.
+              </p>
 
-          <div className="case-window" aria-label="Reveal window">
-            <span>Reveal window</span>
-            <strong>{siteConfig.revealWindow}</strong>
-          </div>
+              <div className="case-window" aria-label="Reveal window">
+                <span>Reveal window</span>
+                <strong>{siteConfig.revealWindow}</strong>
+              </div>
 
-          <div className="countdown-panel" aria-live="polite">
-            <p>{countdown.isOpen ? "Case window is open" : "Case window opens in"}</p>
-            <div className="countdown-grid">
-              <CountdownUnit value={countdown.days} label="Days" />
-              <CountdownUnit value={countdown.hours} label="Hours" />
-              <CountdownUnit value={countdown.minutes} label="Minutes" />
-              <CountdownUnit value={countdown.seconds} label="Seconds" />
+              <div className="countdown-panel" aria-live="polite">
+                <p>{countdown.isOpen ? "Case window is open" : "Case window opens in"}</p>
+                <div className="countdown-grid">
+                  <CountdownUnit value={countdown.days} label="Days" />
+                  <CountdownUnit value={countdown.hours} label="Hours" />
+                  <CountdownUnit value={countdown.minutes} label="Minutes" />
+                  <CountdownUnit value={countdown.seconds} label="Seconds" />
+                </div>
+              </div>
+
+              <div className="hero-actions">
+                <button className="button button-primary" type="button" onClick={scrollToEvidence}>
+                  View the Latest Evidence
+                </button>
+                <button className="button button-secondary" type="button" onClick={goToPool}>
+                  Join the Baby Pool
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="hero-actions">
-            <button className="button button-primary" type="button" onClick={scrollToEvidence}>
-              View the Latest Evidence
+            <div className="hero-visual" aria-label="Pikkewyn mascot holding the case file">
+              <img
+                src={heroImage}
+                alt="Pikkewyn mascot holding a case file"
+                onError={() => setHeroImage(siteConfig.heroImageFallback)}
+              />
+            </div>
+          </section>
+
+          <section className="evidence-log-section" id="evidence" aria-labelledby="evidence-log-title">
+            <div className="section-heading">
+              <p className="eyebrow">Evidence Log</p>
+              <h2 id="evidence-log-title">One place for every suspicious update.</h2>
+            </div>
+
+            <div className="evidence-log">
+              <article className="evidence-log-item evidence-log-item-featured">
+                <div>
+                  <span>{latestEvidence.id}</span>
+                  <time>{latestEvidence.date}</time>
+                </div>
+                <h3>{latestEvidence.title}</h3>
+                <p>{latestEvidence.summary}</p>
+                <span className="stamp evidence-log-stamp">Inconclusive</span>
+              </article>
+
+              {archivedEvidence.length > 0 ? (
+                <div className="evidence-archive" aria-label="Previous evidence">
+                  {archivedEvidence.map((item) => (
+                    <article className="evidence-log-item" key={item.id}>
+                      <div>
+                        <span>{item.id}</span>
+                        <time>{item.date}</time>
+                      </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.summary}</p>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        </>
+      ) : (
+        <>
+          <div className="pool-page-nav">
+            <button className="pool-back-button" type="button" onClick={goHome}>
+              ← Back to Case File
             </button>
           </div>
-        </div>
 
-        <div className="hero-visual" aria-label="Pikkewyn mascot holding the case file">
-          <img
-            src={heroImage}
-            alt="Pikkewyn mascot holding a case file"
-            onError={() => setHeroImage(siteConfig.heroImageFallback)}
-          />
-        </div>
-      </section>
-
-      <section className="evidence-log-section" id="evidence" aria-labelledby="evidence-log-title">
-        <div className="section-heading">
-          <p className="eyebrow">Evidence Log</p>
-          <h2 id="evidence-log-title">One place for every suspicious update.</h2>
-        </div>
-
-        <div className="evidence-log">
-          <article className="evidence-log-item evidence-log-item-featured">
-            <div>
-              <span>{latestEvidence.id}</span>
-              <time>{latestEvidence.date}</time>
+          <section className="pool-section" id="pool" aria-labelledby="pool-title">
+            <div className="section-heading">
+              <p className="eyebrow">Baby Pool</p>
+              <h2 id="pool-title">Make your prediction.</h2>
+              <p className="pool-intro">
+                Think you know what Pikkewyn has in store? Lock in your guesses below —
+                one entry per person. Scoring is based on gender, birth date, time, weight,
+                length, hair colour, eye colour, and the baby's name initial. Check the
+                leaderboard after the reveal to see who called it.
+              </p>
             </div>
-            <h3>{latestEvidence.title}</h3>
-            <p>{latestEvidence.summary}</p>
-            <span className="stamp evidence-log-stamp">Inconclusive</span>
-          </article>
+            <PredictionForm onSubmitted={() => {}} />
+          </section>
 
-          {archivedEvidence.length > 0 ? (
-            <div className="evidence-archive" aria-label="Previous evidence">
-              {archivedEvidence.map((item) => (
-                <article className="evidence-log-item" key={item.id}>
-                  <div>
-                    <span>{item.id}</span>
-                    <time>{item.date}</time>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                </article>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </section>
+        </>
+      )}
     </main>
   );
 }
