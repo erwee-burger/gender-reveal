@@ -729,6 +729,14 @@ h2 {
   bottom: 30px;
 }
 
+.evidence-log-image {
+  float: right;
+  width: 140px;
+  border-radius: var(--radius);
+  margin: 0 0 0.75rem 1.25rem;
+  object-fit: cover;
+}
+
 @keyframes waterColorShift {
   0% {
     filter: hue-rotate(var(--water-hue-start)) saturate(1.04);

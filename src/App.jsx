@@ -258,8 +258,15 @@ function App() {
                   <time>{latestEvidence.date}</time>
                 </div>
                 <h3>{latestEvidence.title}</h3>
+                {latestEvidence.image ? (
+                  <img
+                    className="evidence-log-image"
+                    src={latestEvidence.image}
+                    alt={latestEvidence.title}
+                  />
+                ) : null}
                 <p>{latestEvidence.summary}</p>
-                <span className="stamp evidence-log-stamp">Inconclusive</span>
+                <span className="stamp evidence-log-stamp">{latestEvidence.stamp ?? "Inconclusive"}</span>
               </article>
 
               {archivedEvidence.length > 0 ? (

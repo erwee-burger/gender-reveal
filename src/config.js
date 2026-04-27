@@ -25,6 +25,15 @@ export const poolConfig = {
 
 export const evidenceLog = [
   {
+    id: "Evidence 002",
+    title: "Foreign Intelligence Leak — Unverified",
+    date: "27 April 2026",
+    image: "/assets/pikkewy-trumpie.png",
+    stamp: "Fake News",
+    summary:
+      "On 26 April 2026, a claim emerged from a distant territory. Geo, uncle of unconfirmed clearance level and suspected foreign operative, alleged prior knowledge of the classified gender. The Chief Gender Security Officer, Erwee, immediately convened an emergency consultation with Pikkewyn Trumpie. After a thorough review of the intelligence, Pikkewyn Trumpie confirmed: no official leak has occurred. The claim has been formally classified as fake news. The case file remains sealed."
+  },
+  {
     id: "Evidence 001",
     title: "Chief Gender Security Officer",
     date: "26 April 2026",
