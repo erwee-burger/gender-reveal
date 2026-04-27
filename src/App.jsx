@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getCountdownParts } from "./countdown.js";
-import { evidenceLog, siteConfig } from "./config.js";
+import { evidenceLog, goldFishPhrases, siteConfig } from "./config.js";
 import { getConfiguredTheme } from "./theme.js";
 import { PredictionForm } from "./components/PredictionForm.jsx";
+
+const GOLD_FISH_INITIAL_DELAY_MS = 4000;
+const GOLD_FISH_MIN_DELAY_MS = 8000;
+const GOLD_FISH_MAX_DELAY_MS = 18000;
+const GOLD_FISH_VISIBLE_MS = 3600;
 
 const schoolFish = Array.from({ length: 24 }, (_, index) => {
   const isBlue = index < 12;
@@ -66,7 +71,7 @@ function SchoolFish({ fish }) {
   );
 }
 
-function GoldFish({ showBubble, onClick }) {
+function GoldFish({ phrase, showBubble, onClick }) {
   return (
     <button
       className="gold-fish-button"
@@ -76,7 +81,7 @@ function GoldFish({ showBubble, onClick }) {
       data-testid="gold-fish"
     >
       <span className={`fish-bubble ${showBubble ? "is-visible" : ""}`}>
-        Ek is 'n normale vissie
+        {phrase}
       </span>
       <span className="gold-fish-art">
         <svg className="gold-fish" viewBox="0 0 150 82" aria-hidden="true">
@@ -102,8 +107,12 @@ function GoldFish({ showBubble, onClick }) {
 function App() {
   const [now, setNow] = useState(() => new Date());
   const [showGoldBubble, setShowGoldBubble] = useState(false);
+  const [goldFishPhrase, setGoldFishPhrase] = useState(goldFishPhrases[0]);
   const [heroImage, setHeroImage] = useState(siteConfig.heroImage);
   const [page, setPage] = useState("home");
+  const goldFishSpeechTimer = useRef(null);
+  const goldFishHideTimer = useRef(null);
+  const lastGoldFishPhrase = useRef(goldFishPhrases[0]);
   const theme = getConfiguredTheme(siteConfig.theme);
   const countdown = getCountdownParts(siteConfig.countdownTarget, now);
   const latestEvidence = evidenceLog[0];
@@ -114,6 +123,28 @@ function App() {
     return () => window.clearInterval(timer);
   }, []);
 
+  function getRandomGoldFishPhrase() {
+    if (goldFishPhrases.length <= 1) {
+      return goldFishPhrases[0] ?? "";
+    }
+
+    let phrase = goldFishPhrases[Math.floor(Math.random() * goldFishPhrases.length)];
+
+    while (phrase === lastGoldFishPhrase.current) {
+      phrase = goldFishPhrases[Math.floor(Math.random() * goldFishPhrases.length)];
+    }
+
+    lastGoldFishPhrase.current = phrase;
+    return phrase;
+  }
+
+  function getRandomGoldFishDelay() {
+    return (
+      GOLD_FISH_MIN_DELAY_MS +
+      Math.floor(Math.random() * (GOLD_FISH_MAX_DELAY_MS - GOLD_FISH_MIN_DELAY_MS + 1))
+    );
+  }
+
   function scrollToEvidence() {
     document.getElementById("evidence")?.scrollIntoView({
       behavior: "smooth",
@@ -121,10 +152,27 @@ function App() {
     });
   }
 
-  function revealGoldBubble() {
+  const revealGoldBubble = useCallback(() => {
+    setGoldFishPhrase(getRandomGoldFishPhrase());
     setShowGoldBubble(true);
-    window.setTimeout(() => setShowGoldBubble(false), 3600);
-  }
+
+    window.clearTimeout(goldFishHideTimer.current);
+    goldFishHideTimer.current = window.setTimeout(() => {
+      setShowGoldBubble(false);
+    }, GOLD_FISH_VISIBLE_MS);
+
+    window.clearTimeout(goldFishSpeechTimer.current);
+    goldFishSpeechTimer.current = window.setTimeout(revealGoldBubble, getRandomGoldFishDelay());
+  }, []);
+
+  useEffect(() => {
+    goldFishSpeechTimer.current = window.setTimeout(revealGoldBubble, GOLD_FISH_INITIAL_DELAY_MS);
+
+    return () => {
+      window.clearTimeout(goldFishSpeechTimer.current);
+      window.clearTimeout(goldFishHideTimer.current);
+    };
+  }, [revealGoldBubble]);
 
   function goToPool() {
     setPage("pool");
@@ -148,7 +196,7 @@ function App() {
           ))}
         </div>
       </div>
-      <GoldFish showBubble={showGoldBubble} onClick={revealGoldBubble} />
+      <GoldFish phrase={goldFishPhrase} showBubble={showGoldBubble} onClick={revealGoldBubble} />
 
       {page === "home" ? (
         <>

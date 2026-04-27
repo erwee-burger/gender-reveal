@@ -20,8 +20,8 @@ The site is built as a small Vite + React app and is intended to be simple to up
 - One clickable gold fish that shows a speech bubble.
 - Princess Pikkewyn hero image with animated pink glitter background.
 - Evidence log for weekly clues and suspicious updates.
-- **Baby Pool** — on-site prediction game backed by Supabase. Guests guess gender, birth date, time, weight, length, hair colour, eye colour, and name's first letter. One entry per person (enforced by Supabase unique constraint). BabyHunch-compatible 100-point scoring.
-- **Leaderboard** — password-protected table showing all predictions. Scores calculate automatically once `revealResult` is set in `src/config.js`.
+- **Baby Pool** — on-site prediction form backed by Supabase. Lives on a second page reached via the "Join the Baby Pool" hero button. Guests guess gender, birth date, time, weight (0.1 kg steps), length, hair colour, eye colour, and name's first letter. Uniqueness enforced by name (case-insensitive, database constraint). Real-time duplicate name warning as you type. Coloured confetti blast on submission — blue for boy, pink for girl. Multiple people can submit from the same device.
+- **Leaderboard** — built and ready (password-protected, BabyHunch-compatible 100-point scoring), currently hidden from the UI. Re-enable by restoring the import and section in `src/App.jsx`.
 
 ## Main Files
 
@@ -112,10 +112,10 @@ Expected Vercel settings:
 - Output directory: `dist`
 - Root directory: project root
 
-The following environment variables are required. Set them in Vercel and in a local `.env` file (which is git-ignored):
+The following environment variables are required. Set them in Vercel (**Settings → Environment Variables**) and in a local `.env` file (which is git-ignored):
 
 ```
-VITE_SUPABASE_URL=https://xxxx.supabase.co
+VITE_SUPABASE_URL=https://xxxx.supabase.co        ← base URL only, no trailing slash or /rest/v1/
 VITE_SUPABASE_ANON_KEY=eyJ...
 VITE_LEADERBOARD_PASSWORD=your-secret-password
 ```
