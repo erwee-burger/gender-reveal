@@ -168,14 +168,6 @@ function App() {
             <button className="button button-primary" type="button" onClick={scrollToEvidence}>
               View the Latest Evidence
             </button>
-            <a
-              className="button button-secondary"
-              href={siteConfig.babyHunchUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Join the Baby Pool
-            </a>
           </div>
         </div>
 

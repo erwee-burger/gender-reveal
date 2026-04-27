@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { siteConfig } from "../src/config.js";
 
-test("renders the landing page and Baby Hunch link", async ({ page }) => {
+test("renders the landing page", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.getByRole("heading", { name: "The Pikkewyn Case File" })).toBeVisible();
@@ -9,12 +9,6 @@ test("renders the landing page and Baby Hunch link", async ({ page }) => {
   await expect(page.getByLabel("Reveal window").getByText("7-13 June 2026")).toBeVisible();
   await expect(page.getByRole("heading", { name: "One place for every suspicious update." })).toBeVisible();
 
-  const babyPoolLink = page.getByRole("link", { name: "Join the Baby Pool" });
-  await expect(babyPoolLink).toHaveAttribute(
-    "href",
-    "https://www.babyhunch.com/pool/P03162IR96EN"
-  );
-  await expect(babyPoolLink).toHaveAttribute("target", "_blank");
 });
 
 test("scrolls to the latest evidence section", async ({ page }) => {

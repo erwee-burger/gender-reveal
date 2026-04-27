@@ -1,7 +1,6 @@
 export const siteConfig = {
   parents: "Bambi & Tahnee",
   subject: "Pikkewyn",
-  babyHunchUrl: "https://www.babyhunch.com/pool/P03162IR96EN",
   heroImage: "/assets/pikkewyn-princess.png",
   heroImageFallback: "/assets/pikkewyn-mascot.png",
   revealWindow: "7-13 June 2026",
