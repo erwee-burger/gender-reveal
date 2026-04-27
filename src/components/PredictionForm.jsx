@@ -209,8 +209,8 @@ export function PredictionForm({ onSubmitted }) {
             type="number"
             required
             step="0.1"
-            min="1"
-            max="7"
+            min="0"
+            max="15"
             value={fields.weight_kg}
             onChange={(e) => set("weight_kg", e.target.value)}
             placeholder="e.g. 3.2"
@@ -223,8 +223,8 @@ export function PredictionForm({ onSubmitted }) {
             type="number"
             required
             step="0.1"
-            min="30"
-            max="65"
+            min="0"
+            max="180"
             value={fields.length_cm}
             onChange={(e) => set("length_cm", e.target.value)}
             placeholder="e.g. 51.0"
@@ -273,7 +273,7 @@ export function PredictionForm({ onSubmitted }) {
           pattern="[A-Za-z]"
           value={fields.name_letter}
           onChange={(e) => set("name_letter", e.target.value.replace(/[^A-Za-z]/g, ""))}
-          placeholder="e.g. S"
+          placeholder="E"
         />
       </div>
 
