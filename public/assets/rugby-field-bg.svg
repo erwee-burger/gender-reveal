@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffc0dc"/>
+      <stop offset="70%" stop-color="#ffddef"/>
+      <stop offset="100%" stop-color="#e8f5e9"/>
+    </linearGradient>
+    <linearGradient id="fieldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e7c34"/>
+      <stop offset="100%" stop-color="#0e5020"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="460" height="560" fill="url(#skyGrad)"/>
+
+  <!-- Field -->
+  <rect y="250" width="460" height="310" fill="url(#fieldGrad)"/>
+
+  <!-- Alternating grass stripes -->
+  <rect y="250" width="460" height="31" fill="#228b3c" opacity="0.7"/>
+  <rect y="312" width="460" height="31" fill="#228b3c" opacity="0.7"/>
+  <rect y="374" width="460" height="31" fill="#228b3c" opacity="0.7"/>
+  <rect y="436" width="460" height="31" fill="#228b3c" opacity="0.7"/>
+  <rect y="498" width="460" height="31" fill="#228b3c" opacity="0.7"/>
+
+  <!-- Field markings -->
+  <!-- Horizon/try line -->
+  <line x1="0" y1="268" x2="460" y2="268" stroke="white" stroke-width="3" opacity="0.55"/>
+  <!-- 22m line -->
+  <line x1="0" y1="330" x2="460" y2="330" stroke="white" stroke-width="2" opacity="0.4"/>
+  <!-- Halfway line -->
+  <line x1="0" y1="400" x2="460" y2="400" stroke="white" stroke-width="2.5" opacity="0.5"/>
+  <!-- 22m far -->
+  <line x1="0" y1="470" x2="460" y2="470" stroke="white" stroke-width="2" opacity="0.4"/>
+
+  <!-- Perspective converging sidelines -->
+  <line x1="230" y1="252" x2="10" y2="560" stroke="white" stroke-width="1.5" opacity="0.35"/>
+  <line x1="230" y1="252" x2="450" y2="560" stroke="white" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Centre spot -->
+  <circle cx="230" cy="400" r="5" fill="none" stroke="white" stroke-width="2" opacity="0.45"/>
+  <circle cx="230" cy="400" r="26" fill="none" stroke="white" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Goal posts -->
+  <!-- Left upright (above crossbar) -->
+  <rect x="72" y="44" width="13" height="190" rx="6.5" fill="white" opacity="0.93"/>
+  <!-- Right upright (above crossbar) -->
+  <rect x="375" y="44" width="13" height="190" rx="6.5" fill="white" opacity="0.93"/>
+  <!-- Crossbar -->
+  <rect x="72" y="222" width="316" height="13" rx="6.5" fill="white" opacity="0.93"/>
+  <!-- Central post (below crossbar to field) -->
+  <rect x="223" y="235" width="14" height="330" rx="7" fill="white" opacity="0.93"/>
+
+  <!-- Subtle post shadows/glow -->
+  <rect x="69" y="44" width="13" height="190" rx="6.5" fill="rgba(255,180,210,0.25)"/>
+  <rect x="378" y="44" width="13" height="190" rx="6.5" fill="rgba(255,180,210,0.25)"/>
+  <rect x="69" y="222" width="316" height="13" rx="6.5" fill="rgba(255,180,210,0.25)"/>
+</svg>

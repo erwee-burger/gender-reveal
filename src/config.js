@@ -1,11 +1,11 @@
 export const siteConfig = {
   parents: "Bambi & Tahnee",
   subject: "Pikkewyn",
-  heroImage: "/assets/pikkewyn-princess.png",
+  heroImage: "/assets/pikkewyn-rugby.png",
   heroImageFallback: "/assets/pikkewyn-mascot.png",
   revealWindow: "7-13 June 2026",
   countdownTarget: "2026-06-07T00:00:00+02:00",
-  theme: "blue-leaning"
+  theme: "pink-leaning"
 };
 
 export const poolConfig = {
