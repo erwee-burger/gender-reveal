@@ -25,6 +25,14 @@ export const poolConfig = {
 
 export const evidenceLog = [
   {
+    id: "Evidence 003",
+    title: "Dr GPT's Diagnosis — Source Discredited",
+    date: "29 April 2026",
+    stamp: "Source Discredited",
+    summary:
+      "On 29 April 2026, Charissa — known associate, alleged aunt, and notorious Comrades conscription officer — submitted new intelligence to the case file. Having consulted with a certain Dr GPT, she presented his formal conclusion: it is a boy. The Chief Gender Security Officer, Erwee, immediately opened an investigation into Dr GPT's qualifications. In the course of the investigation, contact was made with Dr J La Grange. Dr La Grange confirmed that this is not the first time Mr C GPT has misrepresented himself as a medical professional, and formally advised against acting on any guidance from him. The evidence has been ruled inadmissible. The case file remains sealed."
+  },
+  {
     id: "Evidence 002",
     title: "Foreign Intelligence Leak — Unverified",
     date: "27 April 2026",
