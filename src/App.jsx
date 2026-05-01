@@ -278,7 +278,15 @@ function App() {
                         <time>{item.date}</time>
                       </div>
                       <h3>{item.title}</h3>
+                      {item.image ? (
+                        <img
+                          className="evidence-log-image"
+                          src={item.image}
+                          alt={item.title}
+                        />
+                      ) : null}
                       <p>{item.summary}</p>
+                      <span className="stamp evidence-log-stamp">{item.stamp ?? "Inconclusive"}</span>
                     </article>
                   ))}
                 </div>
