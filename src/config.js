@@ -25,6 +25,15 @@ export const poolConfig = {
 
 export const evidenceLog = [
   {
+    id: "Evidence 004",
+    title: "On-the-Ground Report — Correspondent Stumped",
+    date: "1 May 2026",
+    image: "/assets/pikkewy-trumpie.png",
+    stamp: "No Comment",
+    summary:
+      "Following the Wally Hayward Marathon in Centurion, Die Kleur Koerant's roving reporter Pikkie Porter managed to intercept Luan — future uncle and self-described non-athlete — at the finish line. Pikkie, ever the seasoned journalist, noted that the route had been noticeably decorated with both pink and blue, and pressed Luan for his expert analysis: which colour was more dominant, and did he see it as a sign? Luan considered the question carefully, then responded that he doesn't understand what any of this has to do with golf. Die Kleur Koerant has rated this insight as inconclusive. The case file remains sealed."
+  },
+  {
     id: "Evidence 003",
     title: "Dr GPT's Diagnosis — Source Discredited",
     date: "29 April 2026",
