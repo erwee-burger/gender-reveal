@@ -579,13 +579,20 @@ h2 {
   min-height: 520px;
   padding: 18px;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.32), transparent 18%),
-    url('/assets/rugby-field-bg.svg') center/cover no-repeat;
-  border: 1px solid rgba(30, 100, 50, 0.3);
+    radial-gradient(ellipse 52% 38% at 12% 20%, rgba(33, 118, 201, 0.92), transparent 70%),
+    radial-gradient(ellipse 44% 32% at 88% 14%, rgba(214, 83, 140, 0.88), transparent 68%),
+    radial-gradient(ellipse 38% 30% at 72% 82%, rgba(255, 195, 0, 0.84), transparent 66%),
+    radial-gradient(ellipse 34% 28% at 18% 78%, rgba(52, 199, 89, 0.8), transparent 64%),
+    radial-gradient(ellipse 30% 24% at 90% 54%, rgba(148, 72, 224, 0.82), transparent 60%),
+    radial-gradient(ellipse 28% 22% at 48% 10%, rgba(255, 111, 40, 0.78), transparent 62%),
+    radial-gradient(ellipse 24% 20% at 36% 62%, rgba(0, 196, 210, 0.76), transparent 58%),
+    radial-gradient(ellipse 20% 18% at 62% 46%, rgba(255, 59, 100, 0.72), transparent 56%),
+    #fff8f4;
+  border: 1px solid rgba(31, 36, 48, 0.1);
   border-radius: var(--radius);
   box-shadow:
-    0 24px 70px rgba(20, 80, 40, 0.22),
-    inset 0 0 54px rgba(255, 255, 255, 0.15);
+    0 24px 70px rgba(31, 36, 48, 0.16),
+    inset 0 0 60px rgba(255, 255, 255, 0.22);
 }
 
 .hero-visual::after {
@@ -607,8 +614,8 @@ h2 {
   height: auto;
   margin: 28px auto 0;
   filter:
-    drop-shadow(0 22px 28px rgba(112, 22, 72, 0.26))
-    drop-shadow(0 0 24px rgba(255, 255, 255, 0.45));
+    drop-shadow(0 22px 28px rgba(31, 36, 48, 0.22))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.6));
 }
 
 .evidence-log-section {
