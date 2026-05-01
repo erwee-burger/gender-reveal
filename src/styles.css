@@ -627,7 +627,7 @@ h2 {
 
 .evidence-log-item {
   position: relative;
-  padding: 22px 24px;
+  padding: 22px 24px 72px;
   background: rgba(255, 253, 247, 0.88);
   border: 1px solid var(--case-line);
   border-left: 6px solid var(--daily-blue);

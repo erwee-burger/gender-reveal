@@ -31,7 +31,7 @@ export const evidenceLog = [
     image: "/assets/pikkie-porter.png",
     stamp: "No Comment",
     summary:
-      "Following the Wally Hayward Marathon in Centurion, Die Kleur Koerant's roving reporter Pikkie Porter managed to intercept Luan — future uncle and self-proclaimed elite athlete — at the finish line. Pikkie, ever the seasoned journalist, noted that the route had been noticeably decorated with both pink and blue, and pressed Luan for his expert analysis: which colour was more dominant, and did he see it as a sign? Luan considered the question carefully, then responded that he doesn't understand what any of this has to do with golf. Die Kleur Koerant has rated this insight as inconclusive. The case file remains sealed."
+      "Following the Wally Hayward Marathon in Centurion, Die Kleur Koerant's roving reporter Pikkie Porter managed to intercept Luan — future uncle with no coordination nor any athletic ability — at the finish line. Pikkie, ever the seasoned journalist, noted that the route had been noticeably decorated with both pink and blue, and pressed Luan for his expert analysis: which colour was more dominant, and did he see it as a sign? Luan considered the question carefully, then responded that he doesn't understand what any of this has to do with golf. Die Kleur Koerant has rated this insight as inconclusive. The case file remains sealed."
   },
   {
     id: "Evidence 003",
