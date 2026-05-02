@@ -231,7 +231,7 @@ function App() {
                   View the Latest Evidence
                 </button>
                 <button className="button button-secondary" type="button" onClick={goToPool}>
-                  Join the Baby Pool
+                  Kliek hier om te raai
                 </button>
               </div>
             </div>
