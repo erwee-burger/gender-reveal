@@ -1,11 +1,11 @@
 export const siteConfig = {
   parents: "Bambi & Tahnee",
   subject: "Pikkewyn",
-  heroImage: "/assets/pikkewyn-verf.png",
+  heroImage: "/assets/Pikkewyn-lego.png",
   heroImageFallback: "/assets/pikkewyn-mascot.png",
   revealWindow: "7-13 June 2026",
   countdownTarget: "2026-06-07T00:00:00+02:00",
-  theme: "blue-leaning"
+  theme: "pink-leaning"
 };
 
 export const poolConfig = {
@@ -24,6 +24,14 @@ export const poolConfig = {
 };
 
 export const evidenceLog = [
+  {
+    id: "Evidence 005",
+    title: "Mechanic's Intuition — Intercepted",
+    date: "4 May 2026",
+    stamp: "Access Denied",
+    summary:
+      "Die Kleur Koerant has received intelligence regarding one Oupa Willem — grandfather-in-waiting, seasoned mechanic, and firm believer in the diagnostic capabilities of the OBD scanner. On multiple occasions, Oupa Willem has arrived at family gatherings with his scanner and a quiet confidence that modern automotive technology holds the answer to the question the nation has been asking. On each occasion, Ouma Tia has intervened before any reading could be taken. The scanner has been returned to his bakkie. The subject has been redirected. When pressed by this publication for comment, Oupa Willem had only this to say: \"I'm just saying. One reading. Five seconds.\" Ouma Tia was unavailable for comment, though sources close to the investigation confirm she was not far away. The evidence has been ruled inaccessible. The case file remains sealed."
+  },
   {
     id: "Evidence 004",
     title: "On-the-Ground Report — Correspondent Stumped",
