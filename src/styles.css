@@ -62,15 +62,15 @@ button {
 
 .site-shell[data-theme="blue-leaning"] {
   --daily-blue: #075da8;
-  --daily-pink: #c77fa4;
-  --daily-blue-soft: #b9e1ff;
-  --daily-pink-soft: #f8edf3;
-  --water-one: rgba(3, 74, 142, 0.72);
-  --water-two: rgba(31, 133, 212, 0.56);
-  --water-three: rgba(134, 196, 245, 0.34);
-  --water-hue-start: -6deg;
-  --water-hue-mid: 4deg;
-  --water-hue-end: -10deg;
+  --daily-pink: #9f6f9a;
+  --daily-blue-soft: #cfeaff;
+  --daily-pink-soft: #f4edf3;
+  --water-one: rgba(2, 64, 130, 0.78);
+  --water-two: rgba(18, 115, 202, 0.6);
+  --water-three: rgba(118, 190, 244, 0.42);
+  --water-hue-start: -8deg;
+  --water-hue-mid: 0deg;
+  --water-hue-end: -14deg;
 }
 
 .site-shell[data-theme="pink-leaning"] {
@@ -126,6 +126,25 @@ button {
       transparent 44px
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.06));
+}
+
+.site-shell[data-theme="blue-leaning"] .water-background {
+  background:
+    radial-gradient(circle at 20% 14%, rgba(255, 255, 255, 0.76), transparent 25%),
+    radial-gradient(ellipse at 84% 88%, rgba(146, 211, 255, 0.32), transparent 44%),
+    linear-gradient(160deg, #d9f0ff 0%, #90cdf7 34%, #4fa2df 68%, #1c70bd 100%);
+}
+
+.site-shell[data-theme="blue-leaning"] .water-background::after {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(7, 93, 168, 0.08) 0,
+      rgba(7, 93, 168, 0.08) 1px,
+      transparent 1px,
+      transparent 42px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.08));
 }
 
 .water-layer {
@@ -599,15 +618,13 @@ h2 {
   min-height: 520px;
   padding: 18px;
   background:
-    radial-gradient(ellipse 52% 38% at 12% 20%, rgba(33, 118, 201, 0.92), transparent 70%),
-    radial-gradient(ellipse 44% 32% at 88% 14%, rgba(214, 83, 140, 0.88), transparent 68%),
-    radial-gradient(ellipse 38% 30% at 72% 82%, rgba(255, 195, 0, 0.84), transparent 66%),
-    radial-gradient(ellipse 34% 28% at 18% 78%, rgba(52, 199, 89, 0.8), transparent 64%),
-    radial-gradient(ellipse 30% 24% at 90% 54%, rgba(148, 72, 224, 0.82), transparent 60%),
-    radial-gradient(ellipse 28% 22% at 48% 10%, rgba(255, 111, 40, 0.78), transparent 62%),
+    radial-gradient(ellipse 54% 38% at 14% 18%, rgba(33, 118, 201, 0.92), transparent 70%),
+    radial-gradient(ellipse 42% 30% at 88% 16%, rgba(113, 196, 255, 0.86), transparent 68%),
+    radial-gradient(ellipse 38% 30% at 74% 84%, rgba(255, 195, 0, 0.68), transparent 66%),
+    radial-gradient(ellipse 34% 28% at 18% 78%, rgba(52, 199, 89, 0.58), transparent 64%),
+    radial-gradient(ellipse 28% 22% at 48% 10%, rgba(214, 83, 140, 0.4), transparent 62%),
     radial-gradient(ellipse 24% 20% at 36% 62%, rgba(0, 196, 210, 0.76), transparent 58%),
-    radial-gradient(ellipse 20% 18% at 62% 46%, rgba(255, 59, 100, 0.72), transparent 56%),
-    #fff8f4;
+    #eef8ff;
   border: 1px solid rgba(31, 36, 48, 0.1);
   border-radius: var(--radius);
   box-shadow:

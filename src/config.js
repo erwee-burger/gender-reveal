@@ -1,11 +1,11 @@
 export const siteConfig = {
   parents: "Bambi & Tahnee",
   subject: "Pikkewyn",
-  heroImage: "/assets/Pikkewyn-lego.png",
+  heroImage: "/assets/pikkewyn-ballerina.png",
   heroImageFallback: "/assets/pikkewyn-mascot.png",
   revealWindow: "7-13 June 2026",
   countdownTarget: "2026-06-07T00:00:00+02:00",
-  theme: "pink-leaning"
+  theme: "blue-leaning"
 };
 
 export const poolConfig = {
@@ -24,6 +24,24 @@ export const poolConfig = {
 };
 
 export const evidenceLog = [
+  {
+    id: "Evidence 007",
+    title: "Operation Sokkie Biltong",
+    date: "14 May 2026",
+    image: "/assets/pikkies-dans.png",
+    stamp: "Bribe Denied",
+    summary:
+      "On 14 May 2026, Ouma Zelda, Tahnee's mother and alleged dance-floor legend, made contact with the Chief Gender Security Officer. The exchange began warmly enough, with fond memories of the Hattingh wedding and claims that they once burned up the dansvloer together. Then the operation escalated. Ouma Zelda attempted to soften the CGSO with promises of a proper sokkie session and biltong, a tactic classified by investigators as emotional bribery with snack-based intent. Fortunately, the CGSO detected the trap before any classified gender intelligence could leak. Communications were immediately cut, the biltong was placed under suspicion, and the case file remains sealed tight."
+  },
+  {
+    id: "Evidence 006",
+    title: "Foul Play Detected",
+    date: "9 May 2026",
+    image: "/assets/pikkewyn-ref.png",
+    stamp: "Bad Faith",
+    summary:
+      "Bambi attempted to deceive Geo by sending him a voice note asking whether the Chief Gender Security Officer had also phoned him and told him that it was a boy. This was not true. The foul play was brought to the Chief Gender Security Officer's attention and a formal investigation was opened. An independent review was requested from Ouma Tia, who is regarded as a trustworthy person. The review concluded that Bambi acted in bad faith. Bambi has been issued with a rainbow card. Tannie Meraai has also issued a formal warning, including notice that any repeat offence may be met with physical intimidation. Future penalties will apply, with the final penalty decision reserved for a later stage. The case file remains sealed."
+  },
   {
     id: "Evidence 005",
     title: "Mechanic's Intuition — Intercepted",
