@@ -20,6 +20,17 @@ const GENDER_LABELS = {
   girl: "Girl"
 };
 
+const GENDER_SIGNAL_PHRASES = [
+  "Signal scrambled.",
+  "Evidence swimming in circles.",
+  "Reading currently unreliable.",
+  "Blue? Pink? Both? Neither?",
+  "The fish refuse to testify.",
+  "Rainbow interference detected.",
+  "Case file temporarily soggy.",
+  "Pikkewyn is withholding comment."
+];
+
 function getRandomGenderSplit() {
   const boy = 12 + Math.floor(Math.random() * 77);
   return {
@@ -96,6 +107,7 @@ function ChartRows({ items, total, tone = "neutral" }) {
 function GenderSplit() {
   const [split, setSplit] = useState(() => getRandomGenderSplit());
   const [rainbow, setRainbow] = useState(false);
+  const [phraseIndex, setPhraseIndex] = useState(0);
 
   useEffect(() => {
     let tick = 0;
@@ -103,6 +115,7 @@ function GenderSplit() {
       tick += 1;
       setRainbow(tick % 5 === 0);
       setSplit(getRandomGenderSplit());
+      setPhraseIndex((current) => (current + 1) % GENDER_SIGNAL_PHRASES.length);
     }, 2000);
 
     return () => window.clearInterval(timer);
@@ -111,8 +124,17 @@ function GenderSplit() {
   return (
     <article className="insight-card insight-card-featured">
       <div className="insight-card-heading">
-        <span>Prime Suspect</span>
-        <h3>Gender signal</h3>
+        <div>
+          <span>Prime Suspect</span>
+          <div className="gender-signal-title">
+            <h3>Gender signal</h3>
+            <img
+              className="gender-signal-mascot"
+              src="/assets/pikkewyn-riddler.png"
+              alt="Pikkewyn riddler mascot"
+            />
+          </div>
+        </div>
       </div>
       <div
         className={`gender-meter ${rainbow ? "is-rainbow" : ""}`}
@@ -134,7 +156,7 @@ function GenderSplit() {
         </div>
       </div>
       <p className="gender-disclaimer">
-        The actual gender tally is classified. This meter is misdirection.
+        {GENDER_SIGNAL_PHRASES[phraseIndex]}
       </p>
     </article>
   );
@@ -233,10 +255,6 @@ export function PredictionInsights() {
       <div className="section-heading">
         <p className="eyebrow">Anonymous Intelligence</p>
         <h2 id="guess-board-title">The Guess Board</h2>
-        <p className="insights-intro">
-          Public clues only. The board shows patterns from the baby pool without revealing who
-          guessed what.
-        </p>
       </div>
 
       <div className="insights-shell" data-testid="prediction-insights">

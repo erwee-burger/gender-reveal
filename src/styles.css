@@ -670,12 +670,6 @@ h2 {
   margin-bottom: 24px;
 }
 
-.insights-intro {
-  max-width: 620px;
-  color: var(--case-muted);
-  line-height: 1.65;
-}
-
 .insights-shell {
   display: grid;
   gap: 18px;
@@ -748,6 +742,9 @@ h2 {
 }
 
 .insight-card-heading {
+  display: flex;
+  gap: 14px;
+  align-items: center;
   margin-bottom: 14px;
 }
 
@@ -766,6 +763,24 @@ h2 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.42rem;
   line-height: 1.1;
+}
+
+.gender-signal-title {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.gender-signal-mascot {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid rgba(255, 253, 247, 0.9);
+  border-radius: 999px;
+  box-shadow:
+    0 12px 24px rgba(31, 36, 48, 0.16),
+    0 0 0 1px var(--case-line);
 }
 
 .gender-meter {
@@ -1565,6 +1580,11 @@ h2 {
 
   .gender-scoreboard {
     grid-template-columns: 1fr;
+  }
+
+  .gender-signal-mascot {
+    width: 58px;
+    height: 58px;
   }
 
   .insight-chart-row {
