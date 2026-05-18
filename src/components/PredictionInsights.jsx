@@ -20,6 +20,14 @@ const GENDER_LABELS = {
   girl: "Girl"
 };
 
+function getRandomGenderSplit() {
+  const boy = 12 + Math.floor(Math.random() * 77);
+  return {
+    boy,
+    girl: 100 - boy
+  };
+}
+
 function getPercent(count, total) {
   if (!total) {
     return 0;
@@ -34,6 +42,28 @@ function normalizeChartItems(items) {
     value: item.value ?? item.label ?? "unknown",
     count: Number(item.count ?? 0)
   }));
+}
+
+function bucketBirthDatesByMonth(items) {
+  const formatter = new Intl.DateTimeFormat("en", {
+    month: "long",
+    year: "numeric"
+  });
+  const buckets = new Map();
+
+  normalizeChartItems(items).forEach((item) => {
+    const date = new Date(`${item.value}T00:00:00`);
+    const value = Number.isNaN(date.getTime())
+      ? item.value
+      : `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    const label = Number.isNaN(date.getTime()) ? item.label : formatter.format(date);
+    const existing = buckets.get(value) ?? { value, label, count: 0 };
+
+    existing.count += item.count;
+    buckets.set(value, existing);
+  });
+
+  return Array.from(buckets.values()).sort((a, b) => a.value.localeCompare(b.value));
 }
 
 function ChartRows({ items, total, tone = "neutral" }) {
@@ -63,34 +93,84 @@ function ChartRows({ items, total, tone = "neutral" }) {
   );
 }
 
-function GenderSplit({ items, total }) {
-  const rows = normalizeChartItems(items);
-  const boyCount = rows.find((item) => item.value === "boy")?.count ?? 0;
-  const girlCount = rows.find((item) => item.value === "girl")?.count ?? 0;
-  const boyPercent = getPercent(boyCount, total);
-  const girlPercent = getPercent(girlCount, total);
+function GenderSplit() {
+  const [split, setSplit] = useState(() => getRandomGenderSplit());
+  const [rainbow, setRainbow] = useState(false);
+
+  useEffect(() => {
+    let tick = 0;
+    const timer = window.setInterval(() => {
+      tick += 1;
+      setRainbow(tick % 5 === 0);
+      setSplit(getRandomGenderSplit());
+    }, 2000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <article className="insight-card insight-card-featured">
       <div className="insight-card-heading">
         <span>Prime Suspect</span>
-        <h3>Gender split</h3>
+        <h3>Gender signal</h3>
       </div>
-      <div className="gender-meter" aria-label={`Boy ${boyPercent}%, Girl ${girlPercent}%`}>
-        <span className="gender-meter-boy" style={{ width: `${boyPercent}%` }} />
-        <span className="gender-meter-girl" style={{ width: `${girlPercent}%` }} />
+      <div
+        className={`gender-meter ${rainbow ? "is-rainbow" : ""}`}
+        aria-label={rainbow ? "Gender signal rainbow interference" : "Gender signal is shifting"}
+      >
+        <span className="gender-meter-boy" style={{ width: `${split.boy}%` }} />
+        <span className="gender-meter-girl" style={{ width: `${split.girl}%` }} />
       </div>
       <div className="gender-scoreboard">
         <div>
           <span>Boy</span>
-          <strong>{boyCount}</strong>
-          <em>{boyPercent}%</em>
+          <strong>{rainbow ? "??" : `${split.boy}%`}</strong>
+          <em>Signal shifting</em>
         </div>
         <div>
           <span>Girl</span>
-          <strong>{girlCount}</strong>
-          <em>{girlPercent}%</em>
+          <strong>{rainbow ? "??" : `${split.girl}%`}</strong>
+          <em>{rainbow ? "Rainbow interference" : "Signal shifting"}</em>
         </div>
+      </div>
+      <p className="gender-disclaimer">
+        The actual gender tally is classified. This meter is misdirection.
+      </p>
+    </article>
+  );
+}
+
+function DistributionCard({ title, eyebrow, items, total, tone }) {
+  const rows = normalizeChartItems(items);
+  const max = Math.max(...rows.map((item) => item.count), 1);
+
+  return (
+    <article className="insight-card">
+      <div className="insight-card-heading">
+        <span>{eyebrow}</span>
+        <h3>{title}</h3>
+      </div>
+      <div className={`distribution-tracks distribution-tracks-${tone}`}>
+        {rows.map((item) => {
+          const width = Math.max((item.count / max) * 100, item.count > 0 ? 8 : 0);
+
+          return (
+            <div
+              className="distribution-track"
+              key={item.value}
+              aria-label={`${item.label}: ${item.count} guesses`}
+            >
+              <div className="distribution-track-meta">
+                <span>{item.label}</span>
+                <strong>{item.count}</strong>
+              </div>
+              <div className="distribution-track-bar" aria-hidden="true">
+                <span style={{ width: `${width}%` }} />
+              </div>
+              <em>{getPercent(item.count, total)}%</em>
+            </div>
+          );
+        })}
       </div>
     </article>
   );
@@ -163,7 +243,6 @@ export function PredictionInsights() {
         <div className="insights-summary">
           <span>Total locked guesses</span>
           <strong>{insights.total}</strong>
-          <p>No names. No row-by-row predictions. Just the public pattern.</p>
         </div>
 
         {!hasPredictionApi() ? (
@@ -183,11 +262,11 @@ export function PredictionInsights() {
           </p>
         ) : (
           <div className="insights-grid">
-            <GenderSplit items={insights.gender} total={insights.total} />
-            <InsightCard
-              title="Birth date"
+            <GenderSplit />
+            <DistributionCard
+              title="Birth date window"
               eyebrow="Calendar Watch"
-              items={insights.birthDates}
+              items={bucketBirthDatesByMonth(insights.birthDates)}
               total={insights.total}
               tone="blue"
             />
@@ -198,14 +277,14 @@ export function PredictionInsights() {
               total={insights.total}
               tone="pink"
             />
-            <InsightCard
+            <DistributionCard
               title="Weight"
               eyebrow="Scale Notes"
               items={insights.weights}
               total={insights.total}
               tone="blue"
             />
-            <InsightCard
+            <DistributionCard
               title="Length"
               eyebrow="Measuring Tape"
               items={insights.lengths}
@@ -225,13 +304,6 @@ export function PredictionInsights() {
               items={insights.eyeColours}
               total={insights.total}
               tone="pink"
-            />
-            <InsightCard
-              title="Name initial"
-              eyebrow="Letter File"
-              items={insights.nameLetters}
-              total={insights.total}
-              tone="neutral"
             />
           </div>
         )}

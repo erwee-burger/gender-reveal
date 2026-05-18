@@ -113,7 +113,7 @@ test("keeps detailed insights sealed until three guesses exist", async ({ page }
   await expect(insights).toContainText("Total locked guesses");
   await expect(insights).toContainText("2");
   await expect(insights).toContainText("1 more guess needed");
-  await expect(insights.getByRole("heading", { name: "Gender split" })).toHaveCount(0);
+  await expect(insights.getByRole("heading", { name: "Gender signal" })).toHaveCount(0);
 });
 
 test("shows anonymous aggregate charts without guest names", async ({ page }) => {
@@ -121,11 +121,14 @@ test("shows anonymous aggregate charts without guest names", async ({ page }) =>
   await page.goto("/");
 
   const insights = page.getByTestId("prediction-insights");
-  await expect(insights.getByRole("heading", { name: "Gender split" })).toBeVisible();
+  await expect(insights.getByRole("heading", { name: "Gender signal" })).toBeVisible();
   await expect(insights.getByText("Boy")).toBeVisible();
   await expect(insights.getByText("Girl")).toBeVisible();
-  await expect(insights.getByRole("heading", { name: "Birth date" })).toBeVisible();
+  await expect(insights.getByRole("heading", { name: "Birth date window" })).toBeVisible();
+  await expect(insights.getByRole("heading", { name: "Weight" })).toBeVisible();
+  await expect(insights.getByRole("heading", { name: "Length" })).toBeVisible();
   await expect(insights.getByRole("heading", { name: "Hair colour" })).toBeVisible();
+  await expect(insights.getByRole("heading", { name: "Name initial" })).toHaveCount(0);
   await expect(insights).not.toContainText("Secret Tester");
 });
 

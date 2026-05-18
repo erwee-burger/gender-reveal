@@ -692,8 +692,8 @@ h2 {
 
 .insights-summary {
   display: grid;
-  grid-template-columns: auto minmax(84px, max-content);
-  gap: 10px 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(84px, max-content);
+  gap: 18px;
   align-items: center;
 }
 
@@ -705,7 +705,6 @@ h2 {
 }
 
 .insights-summary strong {
-  grid-row: span 2;
   padding: 12px 18px;
   color: #fff;
   background: linear-gradient(135deg, var(--daily-blue), var(--daily-pink));
@@ -714,12 +713,6 @@ h2 {
   font-size: 2.3rem;
   line-height: 1;
   text-align: center;
-}
-
-.insights-summary p {
-  margin: 0;
-  color: #3d3942;
-  line-height: 1.55;
 }
 
 .insights-state {
@@ -785,9 +778,29 @@ h2 {
   border-radius: 999px;
 }
 
+.gender-meter.is-rainbow {
+  background: linear-gradient(
+    90deg,
+    #e53935,
+    #f9a825,
+    #43a047,
+    #1e88e5,
+    #8e24aa,
+    #e53935
+  );
+  background-size: 220% 100%;
+  animation: rainbowSignal 1.4s linear infinite;
+}
+
+.gender-meter.is-rainbow span {
+  opacity: 0;
+}
+
 .gender-meter span {
   min-width: 0;
-  transition: width 240ms ease;
+  transition:
+    width 320ms ease,
+    opacity 180ms ease;
 }
 
 .gender-meter-boy {
@@ -832,6 +845,79 @@ h2 {
   color: var(--case-muted);
   font-style: normal;
   font-weight: 800;
+}
+
+.gender-disclaimer {
+  margin: 14px 0 0;
+  color: var(--case-muted);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.distribution-tracks {
+  display: grid;
+  gap: 11px;
+}
+
+.distribution-track {
+  display: grid;
+  grid-template-columns: minmax(104px, 0.62fr) minmax(130px, 1fr) 42px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(31, 36, 48, 0.08);
+}
+
+.distribution-track:last-child {
+  border-bottom: 0;
+}
+
+.distribution-track-meta {
+  display: flex;
+  min-width: 0;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.distribution-track-meta span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #3d3942;
+  font-weight: 900;
+}
+
+.distribution-track-meta strong {
+  color: var(--case-ink);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.distribution-track-bar {
+  overflow: hidden;
+  height: 16px;
+  background: rgba(31, 36, 48, 0.08);
+  border-radius: 999px;
+}
+
+.distribution-track-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--daily-blue), #75bbf7);
+  border-radius: inherit;
+}
+
+.distribution-tracks-pink .distribution-track-bar span {
+  background: linear-gradient(90deg, #f7a8cc, var(--daily-pink));
+}
+
+.distribution-track em {
+  color: var(--case-muted);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 900;
+  text-align: right;
 }
 
 .insight-chart-rows {
@@ -1074,6 +1160,16 @@ h2 {
   100% {
     transform: translate3d(8%, 6%, 0) rotate(2deg);
     opacity: 0.92;
+  }
+}
+
+@keyframes rainbowSignal {
+  0% {
+    background-position: 0 50%;
+  }
+
+  100% {
+    background-position: 220% 50%;
   }
 }
 
@@ -1355,6 +1451,7 @@ h2 {
   .water-layer,
   .water-shine,
   .hero-visual::after,
+  .gender-meter.is-rainbow,
   .school-fish,
   .fish,
   .gold-fish-button,
@@ -1459,7 +1556,6 @@ h2 {
   }
 
   .insights-summary strong {
-    grid-row: auto;
     width: max-content;
   }
 
@@ -1476,6 +1572,16 @@ h2 {
   }
 
   .insight-chart-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .distribution-track {
+    grid-template-columns: 1fr 44px;
+    gap: 8px;
+  }
+
+  .distribution-track-bar {
     grid-column: 1 / -1;
     grid-row: 2;
   }
