@@ -3,6 +3,7 @@ import { getCountdownParts } from "./countdown.js";
 import { evidenceLog, goldFishPhrases, siteConfig } from "./config.js";
 import { getConfiguredTheme } from "./theme.js";
 import { PredictionForm } from "./components/PredictionForm.jsx";
+import { PredictionInsights } from "./components/PredictionInsights.jsx";
 
 const GOLD_FISH_INITIAL_DELAY_MS = 4000;
 const GOLD_FISH_MIN_DELAY_MS = 8000;
@@ -244,6 +245,8 @@ function App() {
               />
             </div>
           </section>
+
+          <PredictionInsights />
 
           <section className="evidence-log-section" id="evidence" aria-labelledby="evidence-log-title">
             <div className="section-heading">

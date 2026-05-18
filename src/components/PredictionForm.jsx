@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
-import { supabase } from "../lib/supabase.js";
+import {
+  hasPredictionApi,
+  predictionNameExists,
+  submitPrediction
+} from "../lib/supabase.js";
 
 const HAIR_OPTIONS = [
   { value: "blonde", label: "Blonde" },
@@ -39,22 +43,18 @@ export function PredictionForm({ onSubmitted }) {
 
   useEffect(() => {
     const trimmed = fields.name.trim();
-    if (!trimmed || !supabase) {
+    if (!trimmed || !hasPredictionApi()) {
       setNameWarning(null);
       return;
     }
     const timer = setTimeout(async () => {
-      const { data } = await supabase
-        .from("predictions")
-        .select("name")
-        .eq("name_key", trimmed.toLowerCase())
-        .maybeSingle();
-      setNameWarning(data ? `"${data.name}" has already voted!` : null);
+      const { data, error } = await predictionNameExists(trimmed);
+      setNameWarning(!error && data ? `"${trimmed}" has already voted!` : null);
     }, 400);
     return () => clearTimeout(timer);
   }, [fields.name]);
 
-  if (!supabase) {
+  if (!hasPredictionApi()) {
     return (
       <p className="pool-confirmed-sub">
         The baby pool is not available right now. Check back soon!
@@ -96,7 +96,7 @@ export function PredictionForm({ onSubmitted }) {
     const letter = fields.name_letter.trim().toUpperCase();
     const weightG = Math.round(parseFloat(fields.weight_kg) * 10) * 100;
 
-    const { error: dbError } = await supabase.from("predictions").insert({
+    const { error: dbError } = await submitPrediction({
       name,
       gender: fields.gender,
       birth_date: fields.birth_date,

@@ -21,6 +21,7 @@ The site is built as a small Vite + React app and is intended to be simple to up
 - Princess Pikkewyn hero image with animated pink glitter background.
 - Evidence log for weekly clues and suspicious updates.
 - **Baby Pool** — on-site prediction form backed by Supabase. Lives on a second page reached via the "Join the Baby Pool" hero button. Guests guess gender, birth date, time, weight (0.1 kg steps), length, hair colour, eye colour, and name's first letter. Uniqueness enforced by name (case-insensitive, database constraint). Real-time duplicate name warning as you type. Coloured confetti blast on submission — blue for boy, pink for girl. Multiple people can submit from the same device.
+- **Anonymous Guess Board** — public home-page insights backed by aggregate-only Supabase RPCs. Names, IDs, and raw prediction rows are not sent to the browser. Detailed charts only appear after at least 3 guesses.
 - **Leaderboard** — built and ready (password-protected, BabyHunch-compatible 100-point scoring), currently hidden from the UI. Re-enable by restoring the import and section in `src/App.jsx`.
 
 ## Main Files
@@ -31,7 +32,9 @@ The site is built as a small Vite + React app and is intended to be simple to up
 - `src/lib/supabase.js` - Supabase client (reads env vars).
 - `src/lib/scoring.js` - BabyHunch-compatible scoring logic.
 - `src/components/PredictionForm.jsx` - baby pool submission form.
+- `src/components/PredictionInsights.jsx` - anonymous aggregate guess board.
 - `src/components/Leaderboard.jsx` - password-gated leaderboard.
+- `supabase/prediction-insights.sql` - privacy-preserving RPCs and RLS policy update.
 - `public/assets/` - image assets used by the site.
 - `tests/landing.spec.js` - Playwright smoke tests.
 
@@ -140,8 +143,12 @@ CREATE TABLE predictions (
 
 ALTER TABLE predictions ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "insert once" ON predictions FOR INSERT WITH CHECK (true);
-CREATE POLICY "read all"    ON predictions FOR SELECT USING (true);
 ```
+
+Then run `supabase/prediction-insights.sql` in the SQL Editor. This drops the old public read policy if it exists and adds:
+
+- `get_prediction_insights()` — returns only anonymous aggregate counts.
+- `prediction_name_exists(input_name text)` — returns only a boolean for the duplicate-name warning.
 
 Copy the project URL and `anon` public key from **Project Settings → API** into your env vars.
 
