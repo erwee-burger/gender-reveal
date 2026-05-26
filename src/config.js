@@ -25,6 +25,15 @@ export const poolConfig = {
 
 export const evidenceLog = [
   {
+    id: "Evidence 008",
+    title: "Official Reveal Time Announced",
+    date: "26 May 2026",
+    image: "/assets/ChatGPT Image May 26, 2026, 08_24_59 PM.png",
+    stamp: "Schedule Confirmed",
+    summary:
+      "The Chief Gender Security Officer has finally announced the official reveal date and time: 12 June 2026 at 16:00 South African time. The announcement follows the secure arrival of a top secret package believed to be highly relevant to the reveal. Investigators can confirm that the package was unopened when it reached the CGSO, and there is currently no reason to believe that any classified information was compromised. The delay in announcing the schedule has been attributed to illness, though standard protocol required a full foul-play investigation before any public statement could be issued. Mamma Tahnee was briefly listed as the primary suspect, but after further review, all suspects have been cleared. The case file remains sealed until reveal time."
+  },
+  {
     id: "Evidence 007",
     title: "Operation Sokkie Biltong",
     date: "14 May 2026",
