@@ -1,11 +1,11 @@
 export const siteConfig = {
   parents: "Bambi & Tahnee",
   subject: "Pikkewyn",
-  heroImage: "/assets/pikkewyn-questionmark.png",
+  heroImage: "/assets/Pikkies.png",
   heroImageFallback: "/assets/pikkewyn-mascot.png",
   revealWindow: "12 June 2026 at 16:00",
   countdownTarget: "2026-06-12T16:00:00+02:00",
-  theme: "blue-leaning"
+  theme: "pink-blue-mix"
 };
 
 export const poolConfig = {
@@ -24,6 +24,14 @@ export const poolConfig = {
 };
 
 export const evidenceLog = [
+  {
+    id: "Evidence 009",
+    title: "Iron Will, Sideline Unknown",
+    date: "7 June 2026",
+    stamp: "Sideline Classified",
+    summary:
+      "On Sunday 7 June 2026, Bambi — future father, wetsuit enthusiast, and a man with an apparent allergy to rest — will be competing in his second half ironman. The event covers 1.9 kilometres of open water, 90 kilometres on the saddle, and a 21.1 kilometre run, which Die Kleur Koerant's investigative team has formally classified as \"a concerning amount of exercise for someone about to become a parent.\" As Bambi pushes through the finish chute on determination alone, the question on the sideline is the same question on the nation's lips: who is out there cheering him on? Tahnee will be trackside — and, as is now well established, she will not be arriving alone. The Chief Gender Security Officer has confirmed that the nature of the sideline support remains the subject of active classification. Analysts favouring a boy note that Ironman runs in the family. Analysts favouring a girl point out that an Ironwoman was on the sideline all along — training, as it happens, for a different kind of marathon. Both delegations have filed their reports. Both remain unconfirmed. The case file remains sealed."
+  },
   {
     id: "Evidence 008",
     title: "Official Reveal Time Announced",

@@ -86,6 +86,19 @@ button {
   --water-hue-end: -6deg;
 }
 
+.site-shell[data-theme="pink-blue-mix"] {
+  --daily-blue: #1a6fc4;
+  --daily-pink: #c9357a;
+  --daily-blue-soft: #d4eeff;
+  --daily-pink-soft: #ffd6ea;
+  --water-one: rgba(201, 53, 122, 0.45);
+  --water-two: rgba(155, 100, 210, 0.28);
+  --water-three: rgba(26, 111, 196, 0.45);
+  --water-hue-start: 8deg;
+  --water-hue-mid: 0deg;
+  --water-hue-end: -8deg;
+}
+
 .water-background {
   position: fixed;
   inset: 0;
@@ -133,6 +146,27 @@ button {
     radial-gradient(circle at 20% 14%, rgba(255, 255, 255, 0.76), transparent 25%),
     radial-gradient(ellipse at 84% 88%, rgba(146, 211, 255, 0.32), transparent 44%),
     linear-gradient(160deg, #d9f0ff 0%, #90cdf7 34%, #4fa2df 68%, #1c70bd 100%);
+}
+
+.site-shell[data-theme="pink-blue-mix"] .water-background {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.78), transparent 26%),
+    radial-gradient(ellipse at 88% 12%, rgba(146, 211, 255, 0.38), transparent 38%),
+    radial-gradient(ellipse at 12% 88%, rgba(244, 143, 177, 0.38), transparent 38%),
+    linear-gradient(135deg, #fce4ef 0%, #e8d0f5 28%, #d8e8ff 58%, #b0d4f8 100%);
+  animation: waterColorShift 64s ease-in-out infinite alternate;
+}
+
+.site-shell[data-theme="pink-blue-mix"] .water-background::after {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(150, 80, 160, 0.05) 0,
+      rgba(150, 80, 160, 0.05) 1px,
+      transparent 1px,
+      transparent 44px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.08));
 }
 
 .site-shell[data-theme="blue-leaning"] .water-background::after {
